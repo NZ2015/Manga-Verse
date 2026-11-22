@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitres | MangaVerse AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <script src="js/pages.js" defer></script>
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo"><span class="logo-icon">M</span><span>MangaVerse <strong>AI</strong></span></div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">⌂ Tableau de bord</a>
+            <a href="studio.html" class="nav-link">✦ Studio</a>
+            <a href="characters.html" class="nav-link">♙ Personnages</a>
+            <a href="world.html" class="nav-link">◎ Univers</a>
+            <a href="story.html" class="nav-link">▤ Histoires</a>
+            <a href="chapters.html" class="nav-link active">▣ Chapitres</a>
+            <a href="storyboard.html" class="nav-link">▦ Storyboard</a>
+            <a href="editor.html" class="nav-link">✎ Éditeur</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">MangaVerse AI / Chapitres</p><h2>Mes chapitres</h2></div>
+        </header>
+
+        <section class="page-intro">
+            <h1>Organise ton manga.</h1>
+            <p>Crée et organise les chapitres de ton histoire.</p>
+        </section>
+
+        <section class="editor-panel">
+            <form id="chapterForm">
+                <label for="chapterTitle">Titre du chapitre</label>
+                <input id="chapterTitle" required placeholder="Exemple : Le commencement">
+
+                <label for="chapterNumber">Numéro</label>
+                <input id="chapterNumber" type="number" min="1" value="1" required>
+
+                <label for="chapterSummary">Résumé</label>
+                <textarea id="chapterSummary" rows="5" placeholder="Que se passe-t-il dans ce chapitre ?"></textarea>
+
+                <button class="primary-button" type="submit">Ajouter le chapitre</button>
+            </form>
+        </section>
+
+        <section class="projects-section">
+            <h2>Liste des chapitres</h2>
+            <div id="chaptersContainer" class="projects-container"></div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
