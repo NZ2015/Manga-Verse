@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio de création | MangaVerse AI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/studio.css">
+
+    <script src="js/script.js" defer></script>
+    <script src="js/ai.js" defer></script>
+    <script src="js/studio.js" defer></script>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">M</span>
+            <span>MangaVerse <strong>AI</strong></span>
+        </div>
+
+        <nav class="navigation">
+            <p class="nav-label">ESPACE CRÉATIF</p>
+
+            <a href="index.html" class="nav-link">
+                <span>⌂</span> Tableau de bord
+            </a>
+
+            <a href="studio.html" class="nav-link active">
+                <span>✦</span> Studio de création
+            </a>
+
+            <a href="characters.html" class="nav-link">
+                <span>♙</span> Personnages
+            </a>
+
+            <a href="world.html" class="nav-link">
+                <span>◎</span> Univers
+            </a>
+
+            <a href="story.html" class="nav-link">
+                <span>▤</span> Histoires
+            </a>
+
+            <a href="chapters.html" class="nav-link">
+                <span>▣</span> Chapitres
+            </a>
+
+            <a href="storyboard.html" class="nav-link">
+                <span>▦</span> Storyboard
+            </a>
+
+            <a href="editor.html" class="nav-link">
+                <span>✎</span> Éditeur
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">MangaVerse AI / Studio</p>
+                <h2>Studio de création</h2>
+            </div>
+        </header>
+
+        <section class="studio-intro">
+            <span class="welcome-tag">✦ CRÉATION INTELLIGENTE</span>
+            <h1>Imagine ton prochain <span>chef-d'œuvre.</span></h1>
+            <p>
+                Décris ton idée et laisse MangaVerse AI
+                construire les premières bases de ton manga.
+                Tu pourras ensuite modifier chaque proposition.
+            </p>
+        </section>
+
+        <section class="studio-form">
+
+            <div class="form-heading">
+                <h2>Créer un nouveau manga</h2>
+                <p>Décris ton univers et tes idées.</p>
+            </div>
+
+            <form id="mangaForm">
+
+                <label for="mangaTitle">Titre du manga</label>
+                <input
+                    type="text"
+                    id="mangaTitle"
+                    placeholder="Exemple : Les Héritiers du Néant"
+                    required
+                >
+
+                <label for="mangaIdea">Décris ton idée</label>
+                <textarea
+                    id="mangaIdea"
+                    rows="6"
+                    placeholder="Raconte l'histoire que tu souhaites créer : le monde, le héros, les ennemis, les événements..."
+                    required
+                ></textarea>
+
+                <div class="form-grid">
+
+                    <div>
+                        <label for="mangaGenre">Genre</label>
+                        <select id="mangaGenre">
+                            <option value="Action">Action</option>
+                            <option value="Aventure">Aventure</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Science-fiction">Science-fiction</option>
+                            <option value="Mystère">Mystère</option>
+                            <option value="Horreur">Horreur</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Comédie">Comédie</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mangaStyle">Style graphique</label>
+                        <select id="mangaStyle">
+                            <option value="black-white">Noir et blanc</option>
+                            <option value="color">Couleur</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="chapterCount">Nombre de chapitres</label>
+                        <input
+                            type="number"
+                            id="chapterCount"
+                            min="1"
+                            max="100"
+                            value="12"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="mangaTone">Ambiance</label>
+                        <select id="mangaTone">
+                            <option value="épique">Épique</option>
+                            <option value="sombre">Sombre</option>
+                            <option value="mystérieuse">Mystérieuse</option>
+                            <option value="humoristique">Humoristique</option>
+                            <option value="émotionnelle">Émotionnelle</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="generation-options">
+                    <h3>Éléments à créer</h3>
+
+                    <label>
+                        <input type="checkbox" name="features" value="characters" checked>
+                        Personnages
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="features" value="world" checked>
+                        Univers
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="features" value="story" checked>
+                        Scénario
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="features" value="pages" checked>
+                        Pages illustrées
+                    </label>
+                </div>
+
+                <button type="submit" class="primary-button" id="generateManga">
+                    ✦ Préparer mon manga
+                </button>
+
+                <p id="generationStatus" role="status" aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <section class="generation-result" id="generationResult" hidden>
+            <h2>Résultat de la création</h2>
+            <div id="resultContent"></div>
+            <a href="editor.html" class="primary-button">
+                Ouvrir l'éditeur
+            </a>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
