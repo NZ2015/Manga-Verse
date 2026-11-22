@@ -2,6 +2,7 @@
 "use strict";
 
 window.MangaVerseAI = {
+
     async generateManga(project) {
         const response = await fetch("/api/generate-manga", {
             method: "POST",
@@ -11,14 +12,18 @@ window.MangaVerseAI = {
             body: JSON.stringify(project)
         });
 
-        if (!response.ok) {
-            throw new Error("La génération IA est momentanément indisponible.");
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message || "La génération du manga a échoué."
+            );
         }
 
-        return await response.json();
+        return data;
     },
 
-    async reviseContent(content, instructions) {
+    async reviseContent(content, instruction, type = "Manga") {
         const response = await fetch("/api/revise-content", {
             method: "POST",
             headers: {
@@ -26,14 +31,19 @@ window.MangaVerseAI = {
             },
             body: JSON.stringify({
                 content,
-                instructions
+                instruction,
+                type
             })
         });
 
-        if (!response.ok) {
-            throw new Error("La modification IA a échoué.");
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message || "La modification du contenu a échoué."
+            );
         }
 
-        return await response.json();
+        return data;
     }
 };
