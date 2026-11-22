@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoires | MangaVerse AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <script src="js/pages.js" defer></script>
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo"><span class="logo-icon">M</span><span>MangaVerse <strong>AI</strong></span></div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">⌂ Tableau de bord</a>
+            <a href="studio.html" class="nav-link">✦ Studio</a>
+            <a href="characters.html" class="nav-link">♙ Personnages</a>
+            <a href="world.html" class="nav-link">◎ Univers</a>
+            <a href="story.html" class="nav-link active">▤ Histoires</a>
+            <a href="chapters.html" class="nav-link">▣ Chapitres</a>
+            <a href="storyboard.html" class="nav-link">▦ Storyboard</a>
+            <a href="editor.html" class="nav-link">✎ Éditeur</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">MangaVerse AI / Histoires</p><h2>Mes histoires</h2></div>
+        </header>
+
+        <section class="page-intro">
+            <h1>Raconte une histoire inoubliable.</h1>
+            <p>Développe ton intrigue, tes événements et tes dialogues.</p>
+        </section>
+
+        <section class="editor-panel">
+            <form id="storyForm">
+                <label for="storyTitle">Titre de l'histoire</label>
+                <input id="storyTitle" required placeholder="Titre">
+
+                <label for="storySynopsis">Résumé</label>
+                <textarea id="storySynopsis" rows="5" placeholder="Résume ton histoire..."></textarea>
+
+                <label for="storyBeginning">Début de l'histoire</label>
+                <textarea id="storyBeginning" rows="6" placeholder="Raconte le début..."></textarea>
+
+                <label for="storyConflict">Conflit principal</label>
+                <textarea id="storyConflict" rows="4" placeholder="Quel est le problème central ?"></textarea>
+
+                <button class="primary-button" type="submit">Enregistrer l'histoire</button>
+            </form>
+        </section>
+
+        <section class="projects-section">
+            <h2>Histoires enregistrées</h2>
+            <div id="storiesContainer" class="projects-container"></div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
