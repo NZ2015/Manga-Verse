@@ -1,0 +1,90 @@
+
+/* MangaVerse AI — Éditeur */
+
+.editor-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+}
+
+.editor-canvas {
+    background: #171326;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 13px;
+    padding: 22px;
+    min-height: 450px;
+}
+
+.editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 20px;
+}
+
+.editor-toolbar button,
+.editor-action {
+    background: #29213b;
+    border: 1px solid rgba(255,255,255,.08);
+    color: white;
+    padding: 10px 13px;
+    border-radius: 7px;
+    font-size: 11px;
+}
+
+.editor-toolbar button:hover,
+.editor-action:hover {
+    background: #7040b9;
+}
+
+.editor-sidebar {
+    background: #171326;
+    border-radius: 13px;
+    padding: 19px;
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.editor-sidebar h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.editor-page {
+    background: #fff;
+    color: #171126;
+    min-height: 350px;
+    padding: 12px;
+    border-radius: 4px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.editor-panel-item {
+    background: #eee;
+    border: 2px solid #222;
+    min-height: 100px;
+    margin-bottom: 10px;
+    padding: 12px;
+    color: #222;
+    font-size: 12px;
+}
+
+.editor-page textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 9px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.editor-status {
+    color: #b78aff;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+@media(max-width: 850px) {
+    .editor-workspace {
+        grid-template-columns: 1fr;
+    }
+}
