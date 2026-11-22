@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur | MangaVerse AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <script src="js/editor.js" defer></script>
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo"><span class="logo-icon">M</span><span>MangaVerse <strong>AI</strong></span></div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">⌂ Tableau de bord</a>
+            <a href="studio.html" class="nav-link">✦ Studio</a>
+            <a href="characters.html" class="nav-link">♙ Personnages</a>
+            <a href="world.html" class="nav-link">◎ Univers</a>
+            <a href="story.html" class="nav-link">▤ Histoires</a>
+            <a href="chapters.html" class="nav-link">▣ Chapitres</a>
+            <a href="storyboard.html" class="nav-link">▦ Storyboard</a>
+            <a href="editor.html" class="nav-link active">✎ Éditeur</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">MangaVerse AI / Éditeur</p>
+                <h2>Éditeur de manga</h2>
+            </div>
+            <button id="saveManga" class="primary-button">Enregistrer</button>
+        </header>
+
+        <section class="page-intro">
+            <h1>Ton manga, tes décisions.</h1>
+            <p>Modifie librement les propositions de l'intelligence artificielle.</p>
+        </section>
+
+        <section class="editor-panel">
+            <label for="editTitle">Titre du manga</label>
+            <input id="editTitle" type="text" placeholder="Titre de ton manga">
+
+            <label for="editStory">Scénario</label>
+            <textarea id="editStory" rows="10" placeholder="Ton histoire apparaîtra ici. Tu pourras la modifier."></textarea>
+
+            <label for="editNotes">Instructions de modification</label>
+            <textarea id="editNotes" rows="3" placeholder="Exemple : rends le héros plus mystérieux..."></textarea>
+
+            <button id="requestRevision" class="primary-button" type="button">
+                ✦ Demander une modification à l'IA
+            </button>
+
+            <p id="editorStatus" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+</div>
+</body>
+</html>
