@@ -1,0 +1,175 @@
+
+/* MangaVerse AI — Studio de création */
+
+.studio-intro,
+.page-intro {
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    background: linear-gradient(120deg, #291943, #171126);
+    border: 1px solid rgba(155,92,255,.2);
+}
+
+.studio-intro h1,
+.page-intro h1 {
+    font-size: clamp(25px, 4vw, 36px);
+    margin: 13px 0;
+}
+
+.studio-intro h1 span {
+    color: #b78aff;
+}
+
+.studio-intro p,
+.page-intro p {
+    color: #aaa0bd;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.studio-form,
+.editor-panel {
+    background: #171326;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 15px;
+    padding: 28px;
+}
+
+.form-heading {
+    margin-bottom: 25px;
+}
+
+.form-heading h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.form-heading p {
+    color: #9690a9;
+    font-size: 12px;
+}
+
+.studio-form label,
+.editor-panel label {
+    display: block;
+    margin: 19px 0 9px;
+    color: #e7dfff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.studio-form input,
+.studio-form textarea,
+.studio-form select,
+.editor-panel input,
+.editor-panel textarea,
+.editor-panel select {
+    width: 100%;
+    background: #100d1c;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px;
+    color: white;
+    padding: 13px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: .2s;
+}
+
+.studio-form input:focus,
+.studio-form textarea:focus,
+.studio-form select:focus,
+.editor-panel input:focus,
+.editor-panel textarea:focus,
+.editor-panel select:focus {
+    border-color: #9b5cff;
+    box-shadow: 0 0 0 3px rgba(155,92,255,.12);
+}
+
+.studio-form textarea,
+.editor-panel textarea {
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.studio-form select,
+.editor-panel select {
+    cursor: pointer;
+}
+
+.studio-form option,
+.editor-panel option {
+    background: #171326;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.generation-options {
+    margin: 25px 0;
+    padding: 19px;
+    background: #100d1c;
+    border-radius: 10px;
+}
+
+.generation-options h3 {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.generation-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 5px 15px 5px 0;
+    color: #aaa0bd;
+    font-size: 11px;
+}
+
+.generation-options input {
+    accent-color: #9b5cff;
+    width: auto;
+}
+
+#generateManga {
+    width: 100%;
+    padding: 15px;
+    font-size: 13px;
+}
+
+#generationStatus {
+    color: #b78aff;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.generation-result {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 13px;
+    background: #171326;
+    border: 1px solid rgba(155,92,255,.3);
+}
+
+.generation-result h2 {
+    margin-bottom: 15px;
+}
+
+@media(max-width: 600px) {
+    .studio-form,
+    .editor-panel {
+        padding: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .studio-intro,
+    .page-intro {
+        padding: 20px;
+    }
+}
