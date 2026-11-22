@@ -17,10 +17,12 @@ export default async function handler(req, res) {
             });
         }
 
-        if (!process.env.OPENAI_API_KEY) {
+        const apiKey = process.env.OPENAI_API_KEY;
+
+        if (!apiKey) {
             return res.status(500).json({
                 success: false,
-                message: "La clé API IA n'est pas configurée."
+                message: "Clé API non configurée."
             });
         }
 
@@ -30,22 +32,19 @@ export default async function handler(req, res) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+                    "Authorization": `Bearer ${apiKey}`
                 },
                 body: JSON.stringify({
                     model: "gpt-5",
                     instructions: `
-Tu es MangaVerse AI, un assistant de création de mangas.
-
-Ta mission est de modifier le contenu fourni selon la demande
-de l'utilisateur, tout en préservant les éléments qui ne sont
-pas concernés par la modification.
-
-Crée uniquement du contenu original.
-Retourne uniquement le contenu révisé, sans commentaire inutile.
+Tu es MangaVerse AI.
+Tu aides à modifier des mangas originaux.
+Respecte la demande de l'utilisateur.
+Préserve les éléments qui ne doivent pas changer.
+Retourne uniquement le contenu modifié.
                     `,
                     input: `
-Type de contenu : ${type || "Manga"}
+Type : ${type || "Manga"}
 
 Contenu actuel :
 ${JSON.stringify(content)}
@@ -60,10 +59,10 @@ ${instruction}
         const data = await response.json();
 
         if (!response.ok) {
-            console.error("Erreur OpenAI :", data);
+            console.error("Erreur API :", data);
             return res.status(502).json({
                 success: false,
-                message: "Impossible de modifier le contenu pour le moment."
+                message: "La modification IA a échoué."
             });
         }
 
@@ -82,11 +81,12 @@ ${instruction}
         });
 
     } catch (error) {
-        console.error("Erreur de modification :", error);
+        console.error("Erreur :", error);
 
         return res.status(500).json({
             success: false,
-            message: "Une erreur est survenue pendant la modification."
+            message: "Une erreur est survenue."
         });
     }
 }
+
