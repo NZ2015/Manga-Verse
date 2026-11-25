@@ -4,219 +4,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MangaVerse AI - Plateforme de création de mangas, livres, films et séries.">
+    <meta name="description" content="MangaVerse AI - Plateforme de création de mangas, livres, films et séries avec intelligence artificielle.">
+
     <title>MangaVerse AI | Dashboard</title>
 
     <link rel="stylesheet" href="css/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <script src="js/script.js" defer></script>
 </head>
 
 <body>
 
-    <div class="app-container">
+<div class="app-container">
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="logo">
-                <span class="logo-icon">M</span>
-                <span>MangaVerse <strong>AI</strong></span>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">M</span>
+            <span>MangaVerse <strong>AI</strong></span>
+        </div>
+
+        <nav class="navigation">
+
+            <p class="nav-label">MENU PRINCIPAL</p>
+
+            <a href="index.html" class="nav-link active">
+                <span>⌂</span> Tableau de bord
+            </a>
+
+            <a href="studio.html" class="nav-link">
+                <span>✦</span> Studio de création
+            </a>
+
+            <a href="characters.html" class="nav-link">
+                <span>♙</span> Personnages
+            </a>
+
+            <a href="world.html" class="nav-link">
+                <span>◎</span> Univers
+            </a>
+
+            <a href="story.html" class="nav-link">
+                <span>▤</span> Histoires
+            </a>
+
+            <a href="chapters.html" class="nav-link">
+                <span>▣</span> Chapitres
+            </a>
+
+            <a href="storyboard.html" class="nav-link">
+                <span>▦</span> Storyboard
+            </a>
+
+            <p class="nav-label">PERSONNEL</p>
+
+            <a href="settings.html" class="nav-link">
+                <span>⚙</span> Paramètres
+            </a>
+
+            <a href="abonnement.html" class="nav-link">
+                <span>♛</span> Abonnements
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="upgrade-card">
+                <span class="upgrade-icon">✧</span>
+
+                <h3>Libère ta créativité</h3>
+
+                <p>
+                    Débloque davantage de possibilités
+                    avec MangaVerse AI Premium.
+                </p>
+
+                <a href="abonnement.html" class="upgrade-button">
+                    Découvrir Premium
+                </a>
             </div>
 
-            <nav class="navigation">
-                <p class="nav-label">MENU PRINCIPAL</p>
+            <!-- USER PROFILE -->
+            <div class="user-profile">
 
-                <a href="index.html" class="nav-link active">
-                    <span>⌂</span> Tableau de bord
-                </a>
+                <div class="avatar" id="userAvatar">U</div>
 
-                <a href="studio.html" class="nav-link">
-                    <span>✦</span> Studio de création
-                </a>
-
-                <a href="characters.html" class="nav-link">
-                    <span>♙</span> Personnages
-                </a>
-
-                <a href="world.html" class="nav-link">
-                    <span>◎</span> Univers
-                </a>
-
-                <a href="story.html" class="nav-link">
-                    <span>▤</span> Histoires
-                </a>
-
-                <a href="chapters.html" class="nav-link">
-                    <span>▣</span> Chapitres
-                </a>
-
-                <a href="storyboard.html" class="nav-link">
-                    <span>▦</span> Storyboard
-                </a>
-
-                <p class="nav-label">PERSONNEL</p>
-
-                <a href="#" class="nav-link">
-                    <span>⚙</span> Paramètres
-                </a>
-            </nav>
-
-            <div class="sidebar-bottom">
-                <div class="upgrade-card">
-                    <span class="upgrade-icon">✧</span>
-                    <h3>Libère ta créativité</h3>
-                    <p>Donne vie à tes idées avec MangaVerse AI.</p>
-                    <button type="button" id="exploreBtn">Explorer</button>
+                <div class="user-info">
+                    <strong id="sidebarUsername">Mon compte</strong>
+                    <small id="sidebarPlan">Offre gratuite</small>
                 </div>
 
-                <div class="user-profile">
-                    <div class="avatar">U</div>
-                    <div>
-                        <strong>Mon compte</strong>
-                        <small>Créateur</small>
-                    </div>
-                </div>
+                <button
+                    type="button"
+                    id="logoutBtn"
+                    class="logout-button"
+                    hidden
+                    aria-label="Se déconnecter"
+                    title="Se déconnecter">
+                    ↪
+                </button>
+
             </div>
-        </aside>
 
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
+        </div>
 
-            <header class="topbar">
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">MangaVerse AI / Accueil</p>
+                <h2>Tableau de bord</h2>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button
+                    class="icon-button"
+                    type="button"
+                    id="notificationsBtn"
+                    aria-label="Notifications">
+                    ♧
+                </button>
+
+                <div class="top-avatar" id="topAvatar">U</div>
+
+                <button
+                    type="button"
+                    id="openLoginBtn"
+                    class="secondary-button auth-button">
+                    Connexion
+                </button>
+
+                <button
+                    type="button"
+                    id="openRegisterBtn"
+                    class="primary-button auth-button">
+                    S'inscrire
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME SECTION -->
+        <section class="welcome-section">
+
+            <div class="welcome-content">
+
+                <span class="welcome-tag">
+                    ✦ TON UNIVERS CRÉATIF
+                </span>
+
+                <h1>
+                    Donne vie à ton <span>imagination.</span>
+                </h1>
+
+                <p>
+                    Crée des mangas, invente des personnages,
+                    construis des univers et raconte tes propres histoires.
+                </p>
+
+                <a href="studio.html" class="primary-button">
+                    + Créer un projet
+                </a>
+
+            </div>
+
+            <div class="welcome-decoration">
+
+                <div class="decoration-circle circle-one"></div>
+                <div class="decoration-circle circle-two"></div>
+                <div class="decoration-symbol">漫</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <article class="stat-card">
+
+                <div class="stat-icon purple">▣</div>
+
+                <p>Projets créés</p>
+
+                <h2 id="projectCount">0</h2>
+
+                <small>Tous tes projets</small>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon pink">♙</div>
+
+                <p>Personnages</p>
+
+                <h2 id="characterCount">0</h2>
+
+                <small>Personnages enregistrés</small>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon blue">▤</div>
+
+                <p>Histoires</p>
+
+                <h2 id="storyCount">0</h2>
+
+                <small>Histoires créées</small>
+
+            </article>
+
+            <article class="stat-card">
+
+                <div class="stat-icon green">✦</div>
+
+                <p>Formats disponibles</p>
+
+                <h2>04</h2>
+
+                <small>Manga, livre, film et série</small>
+
+            </article>
+
+        </section>
+
+
+        <!-- CREATION OPTIONS -->
+        <section class="creation-section">
+
+            <div class="section-heading">
+
                 <div>
-                    <p class="breadcrumb">MangaVerse AI / Accueil</p>
-                    <h2>Tableau de bord</h2>
+                    <h2>Que souhaites-tu créer ?</h2>
+                    <p>Choisis un format pour commencer ton projet.</p>
                 </div>
 
-                <div class="topbar-actions">
-                    <button class="icon-button" type="button" aria-label="Notifications">♧</button>
-                    <div class="top-avatar">U</div>
+            </div>
+
+            <div class="creation-grid">
+
+                <a href="studio.html?type=manga" class="creation-card">
+
+                    <div class="creation-icon purple">漫</div>
+
+                    <h3>Manga</h3>
+
+                    <p>Crée ton propre manga et ses chapitres.</p>
+
+                    <span>Commencer →</span>
+
+                </a>
+
+                <a href="studio.html?type=book" class="creation-card">
+
+                    <div class="creation-icon pink">▤</div>
+
+                    <h3>Livre</h3>
+
+                    <p>Écris et organise ton prochain livre.</p>
+
+                    <span>Commencer →</span>
+
+                </a>
+
+                <a href="studio.html?type=film" class="creation-card">
+
+                    <div class="creation-icon blue">▶</div>
+
+                    <h3>Film</h3>
+
+                    <p>Imagine un film avec tes propres personnages.</p>
+
+                    <span>Commencer →</span>
+
+                </a>
+
+                <a href="studio.html?type=series" class="creation-card">
+
+                    <div class="creation-icon green">▣</div>
+
+                    <h3>Série</h3>
+
+                    <p>Construis une série et ses épisodes.</p>
+
+                    <span>Commencer →</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section class="projects-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Mes projets récents</h2>
+                    <p>Retrouve les créations sur lesquelles tu travailles.</p>
                 </div>
-            </header>
 
-            <!-- WELCOME SECTION -->
-            <section class="welcome-section">
-                <div class="welcome-content">
-                    <span class="welcome-tag">✦ TON UNIVERS CRÉATIF</span>
-                    <h1>Donne vie à ton <span>imagination.</span></h1>
-                    <p>
-                        Crée des mangas, invente des personnages,
-                        construis des univers et raconte tes propres histoires.
-                    </p>
+                <a href="studio.html" class="view-all">
+                    Voir tout →
+                </a>
 
-                    <a href="studio.html" class="primary-button">
-                        + Créer un projet
-                    </a>
-                </div>
+            </div>
 
-                <div class="welcome-decoration">
-                    <div class="decoration-circle circle-one"></div>
-                    <div class="decoration-circle circle-two"></div>
-                    <div class="decoration-symbol">漫</div>
-                </div>
-            </section>
+            <div id="projectsContainer" class="projects-container">
 
-            <!-- STATISTICS -->
-            <section class="stats-grid">
-                <article class="stat-card">
-                    <div class="stat-icon purple">▣</div>
-                    <p>Projets créés</p>
-                    <h2 id="projectCount">0</h2>
-                    <small>Tous tes projets</small>
-                </article>
+                <div class="empty-projects">
 
-                <article class="stat-card">
-                    <div class="stat-icon pink">♙</div>
-                    <p>Personnages</p>
-                    <h2 id="characterCount">0</h2>
-                    <small>Personnages enregistrés</small>
-                </article>
+                    <div class="empty-icon">✧</div>
 
-                <article class="stat-card">
-                    <div class="stat-icon blue">▤</div>
-                    <p>Histoires</p>
-                    <h2 id="storyCount">0</h2>
-                    <small>Histoires créées</small>
-                </article>
+                    <h3>Aucun projet pour le moment</h3>
 
-                <article class="stat-card">
-                    <div class="stat-icon green">✦</div>
-                    <p>Formats disponibles</p>
-                    <h2>04</h2>
-                    <small>Manga, livre, film et série</small>
-                </article>
-            </section>
+                    <p>Ton prochain grand univers commence ici.</p>
 
-            <!-- CREATION OPTIONS -->
-            <section class="creation-section">
-                <div class="section-heading">
-                    <div>
-                        <h2>Que souhaites-tu créer ?</h2>
-                        <p>Choisis un format pour commencer ton projet.</p>
-                    </div>
-                </div>
-
-                <div class="creation-grid">
-
-                    <a href="studio.html?type=manga" class="creation-card">
-                        <div class="creation-icon purple">漫</div>
-                        <h3>Manga</h3>
-                        <p>Crée ton propre manga et ses chapitres.</p>
-                        <span>Commencer →</span>
-                    </a>
-
-                    <a href="studio.html?type=book" class="creation-card">
-                        <div class="creation-icon pink">▤</div>
-                        <h3>Livre</h3>
-                        <p>Écris et organise ton prochain livre.</p>
-                        <span>Commencer →</span>
-                    </a>
-
-                    <a href="studio.html?type=film" class="creation-card">
-                        <div class="creation-icon blue">▶</div>
-                        <h3>Film</h3>
-                        <p>Imagine un film avec tes propres personnages.</p>
-                        <span>Commencer →</span>
-                    </a>
-
-                    <a href="studio.html?type=series" class="creation-card">
-                        <div class="creation-icon green">▣</div>
-                        <h3>Série</h3>
-                        <p>Construis une série et ses épisodes.</p>
-                        <span>Commencer →</span>
+                    <a href="studio.html" class="secondary-button">
+                        Créer mon premier projet
                     </a>
 
                 </div>
-            </section>
 
-            <!-- PROJECTS -->
-            <section class="projects-section">
-                <div class="section-heading">
-                    <div>
-                        <h2>Mes projets récents</h2>
-                        <p>Retrouve les créations sur lesquelles tu travailles.</p>
-                    </div>
+            </div>
 
-                    <a href="studio.html" class="view-all">Voir tout →</a>
-                </div>
+        </section>
 
-                <div id="projectsContainer" class="projects-container">
-                    <div class="empty-projects">
-                        <div class="empty-icon">✧</div>
-                        <h3>Aucun projet pour le moment</h3>
-                        <p>Ton prochain grand univers commence ici.</p>
-                        <a href="studio.html" class="secondary-button">Créer mon premier projet</a>
-                    </div>
-                </div>
-            </section>
 
-            <footer class="footer">
-                <p>© 2026 MangaVerse AI — Imagine. Crée. Raconte.</p>
-            </footer>
+        <!-- FOOTER -->
+        <footer class="footer">
 
-        </main>
+            <p>
+                © 2026 MangaVerse AI — Imagine. Crée. Raconte.
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- AUTHENTICATION MODAL -->
+<div
+    id="authModal"
+    class="auth-modal"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="authTitle">
+
+    <div class="auth-modal-content">
+
+        <button
+            type="button"
+            id="closeAuthBtn"
+            class="close-modal"
+            aria-label="Fermer">
+            ×
+        </button>
+
+        <div class="auth-logo">
+            <span class="logo-icon">M</span>
+            <span>MangaVerse <strong>AI</strong></span>
+        </div>
+
+        <h2 id="authTitle">Bienvenue !</h2>
+
+        <p id="authDescription">
+            Connecte-toi pour retrouver tes créations.
+        </p>
+
+
+        <!-- REGISTER FORM -->
+        <form id="registerForm" hidden>
+
+            <label for="registerUsername">
+                Nom d'utilisateur
+            </label>
+
+            <input
+                type="text"
+                id="registerUsername"
+                name="username"
+                placeholder="Ton nom"
+                minlength="3"
+                maxlength="30"
+                autocomplete="username"
+                required>
+
+            <label for="registerEmail">
+                Adresse e-mail
+            </label>
+
+            <input
+                type="email"
+                id="registerEmail"
+                name="email"
+                placeholder="exemple@email.com"
+                autocomplete="email"
+                required>
+
+            <label for="registerPassword">
+                Mot de passe
+            </label>
+
+            <input
+                type="password"
+                id="registerPassword"
+                name="password"
+                placeholder="12 caractères minimum"
+                minlength="12"
+                autocomplete="new-password"
+                required>
+
+            <button
+                type="submit"
+                class="primary-button auth-submit">
+                Créer mon compte
+            </button>
+
+        </form>
+
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" hidden>
+
+            <label for="loginEmail">
+                Adresse e-mail
+            </label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                name="email"
+                placeholder="exemple@email.com"
+                autocomplete="email"
+                required>
+
+            <label for="loginPassword">
+                Mot de passe
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                placeholder="Ton mot de passe"
+                autocomplete="current-password"
+                required>
+
+            <button
+                type="submit"
+                class="primary-button auth-submit">
+                Se connecter
+            </button>
+
+        </form>
+
+
+        <p id="authMessage" role="status" aria-live="polite"></p>
+
+
+        <div class="auth-switch">
+
+            <span id="authSwitchText">
+                Tu n'as pas encore de compte ?
+            </span>
+
+            <button
+                type="button"
+                id="authSwitchBtn">
+                S'inscrire
+            </button>
+
+        </div>
+
     </div>
+
+</div>
 
 </body>
 </html>
