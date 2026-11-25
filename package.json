@@ -1,7 +1,13 @@
 
-
 {
   "name": "mangaverse-ai",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {}
 }
+
+
