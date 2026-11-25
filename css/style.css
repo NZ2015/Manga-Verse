@@ -623,3 +623,216 @@ button {
         font-size: 18px;
     }
 }
+
+/* =========================================
+   MANGAVERSE AI — AUTHENTIFICATION
+========================================= */
+
+/* Gestion de l'attribut hidden */
+[hidden] {
+    display: none !important;
+}
+
+/* Fenêtre de connexion */
+#authModal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(5, 3, 12, 0.85);
+    backdrop-filter: blur(9px);
+}
+
+/* Contenu de la fenêtre */
+#authModal > div,
+#authModal .auth-modal-content,
+#authModal .auth-modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
+    background: linear-gradient(145deg, #201832, #120e20);
+    border: 1px solid rgba(155, 92, 255, 0.3);
+    border-radius: 18px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Bouton de fermeture */
+#closeAuthBtn {
+    position: absolute;
+    top: 14px;
+    right: 17px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: var(--muted);
+    background: var(--surface-light);
+    font-size: 20px;
+    transition: 0.2s;
+}
+
+#closeAuthBtn:hover {
+    color: white;
+    background: #38264f;
+}
+
+/* Titres */
+#authTitle {
+    font-size: 23px;
+    margin-bottom: 9px;
+    color: var(--text);
+}
+
+#authDescription {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* Formulaires */
+#registerForm,
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#registerForm label,
+#loginForm label {
+    display: block;
+    color: #d8cdeb;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+#registerForm input,
+#loginForm input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 9px;
+    outline: none;
+    color: white;
+    background: #100c1b;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    font-family: inherit;
+    font-size: 13px;
+    transition: 0.25s;
+}
+
+#registerForm input:focus,
+#loginForm input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(155, 92, 255, 0.12);
+}
+
+#registerForm input::placeholder,
+#loginForm input::placeholder {
+    color: #706981;
+}
+
+/* Boutons de validation */
+#registerForm button[type="submit"],
+#loginForm button[type="submit"] {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    border-radius: 9px;
+    color: white;
+    background: linear-gradient(100deg, #a15cff, #7942e5);
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+#registerForm button[type="submit"]:hover,
+#loginForm button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 22px rgba(155, 92, 255, 0.25);
+}
+
+#registerForm button:disabled,
+#loginForm button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Message de retour */
+#authMessage {
+    margin-top: 15px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+#authMessage.error {
+    color: #ffaaaa;
+    background: rgba(255, 75, 75, 0.1);
+    border: 1px solid rgba(255, 75, 75, 0.2);
+}
+
+#authMessage.success {
+    color: #75e9b9;
+    background: rgba(69, 214, 160, 0.1);
+    border: 1px solid rgba(69, 214, 160, 0.2);
+}
+
+/* Passage connexion / inscription */
+#authSwitchText {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+#authSwitchBtn {
+    margin-left: 5px;
+    color: var(--purple-light);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#authSwitchBtn:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Boutons de connexion du tableau de bord */
+#openLoginBtn,
+#openRegisterBtn,
+#logoutBtn {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#openLoginBtn:hover,
+#openRegisterBtn:hover,
+#logoutBtn:hover {
+    color: var(--purple-light);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #authModal {
+        padding: 12px;
+    }
+
+    #authModal > div,
+    #authModal .auth-modal-content,
+    #authModal .auth-modal-card {
+        padding: 25px 19px;
+    }
+
+    #authTitle {
+        font-size: 20px;
+    }
+}
