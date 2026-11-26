@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | MangaVerse AI</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .auth-container {
+            max-width: 440px;
+            margin: 70px auto;
+            padding: 30px;
+            background: #171326;
+            border: 1px solid #44336b;
+            border-radius: 16px;
+        }
+
+        .auth-container h1 {
+            text-align: center;
+            color: #c4a5ff;
+        }
+
+        .auth-container p {
+            text-align: center;
+            color: #bbb;
+        }
+
+        .auth-container label {
+            display: block;
+            margin-top: 18px;
+            color: white;
+        }
+
+        .auth-container input {
+            width: 100%;
+            padding: 13px;
+            margin-top: 7px;
+            border: 1px solid #554477;
+            border-radius: 8px;
+            background: #241d38;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .auth-container button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #8b5cf6;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .auth-container button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        #authMessage {
+            margin-top: 18px;
+            line-height: 1.5;
+        }
+
+        .auth-link {
+            display: block;
+            margin-top: 20px;
+            color: #c4a5ff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="auth-container">
+        <h1>Connexion</h1>
+        <p>Heureux de te retrouver sur MangaVerse AI !</p>
+
+        <form id="loginForm">
+            <label for="email">Adresse e-mail</label>
+            <input
+                type="email"
+                id="email"
+                autocomplete="email"
+                required
+            >
+
+            <label for="password">Mot de passe</label>
+            <input
+                type="password"
+                id="password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" id="loginButton">
+                Se connecter
+            </button>
+        </form>
+
+        <p id="authMessage" role="status" aria-live="polite"></p>
+
+        <a class="auth-link" href="inscription.html">
+            Pas encore de compte ? S'inscrire
+        </a>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const authMessage = document.getElementById("authMessage");
+        const loginButton = document.getElementById("loginButton");
+
+        loginForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            loginButton.disabled = true;
+            loginButton.textContent = "Connexion...";
+            authMessage.textContent = "";
+
+            try {
+                const supabase = await window.MangaVerseSupabaseReady;
+
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) throw error;
+
+                if (!data.session) {
+                    throw new Error("Aucune session n'a été créée.");
+                }
+
+                authMessage.textContent = "Connexion réussie !";
+
+                window.location.href = "studio.html";
+
+            } catch (error) {
+                console.error("Erreur de connexion :", error);
+
+                authMessage.textContent =
+                    error.message || "Impossible de se connecter.";
+
+                loginButton.disabled = false;
+                loginButton.textContent = "Se connecter";
+            }
+        });
+    </script>
+
+</body>
+</html>
