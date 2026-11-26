@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription | MangaVerse AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            max-width: 440px;
+            margin: 70px auto;
+            padding: 30px;
+            background: #171326;
+            border: 1px solid #44336b;
+            border-radius: 16px;
+        }
+
+        .auth-container h1 {
+            text-align: center;
+            color: #c4a5ff;
+        }
+
+        .auth-container p {
+            text-align: center;
+            color: #bbb;
+        }
+
+        .auth-container label {
+            display: block;
+            margin-top: 18px;
+            color: white;
+        }
+
+        .auth-container input {
+            width: 100%;
+            padding: 13px;
+            margin-top: 7px;
+            border: 1px solid #554477;
+            border-radius: 8px;
+            background: #241d38;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .auth-container button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #8b5cf6;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #authMessage {
+            margin-top: 18px;
+            line-height: 1.5;
+        }
+
+        .auth-link {
+            display: block;
+            margin-top: 20px;
+            color: #c4a5ff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="auth-container">
+        <h1>Créer un compte</h1>
+        <p>Bienvenue dans MangaVerse AI !</p>
+
+        <form id="signupForm">
+            <label for="fullName">Nom complet</label>
+            <input
+                type="text"
+                id="fullName"
+                autocomplete="name"
+                required
+            >
+
+            <label for="email">Adresse e-mail</label>
+            <input
+                type="email"
+                id="email"
+                autocomplete="email"
+                required
+            >
+
+            <label for="password">Mot de passe</label>
+            <input
+                type="password"
+                id="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+            >
+
+            <label for="confirmPassword">Confirmer le mot de passe</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                autocomplete="new-password"
+                minlength="8"
+                required
+            >
+
+            <button type="submit" id="signupButton">
+                Créer mon compte
+            </button>
+        </form>
+
+        <p id="authMessage" role="status" aria-live="polite"></p>
+
+        <a class="auth-link" href="connexion.html">
+            Déjà un compte ? Se connecter
+        </a>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
+    <script>
+        const signupForm = document.getElementById("signupForm");
+        const authMessage = document.getElementById("authMessage");
+        const signupButton = document.getElementById("signupButton");
+
+        signupForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password.length < 8) {
+                authMessage.textContent = "Le mot de passe doit contenir au moins 8 caractères.";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                authMessage.textContent = "Les mots de passe ne correspondent pas.";
+                return;
+            }
+
+            signupButton.disabled = true;
+            signupButton.textContent = "Création en cours...";
+            authMessage.textContent = "";
+
+            try {
+                const supabase = await window.MangaVerseSupabaseReady;
+
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                    options: {
+                        data: {
+                            full_name: fullName
+                        }
+                    }
+                });
+
+                if (error) throw error;
+
+                authMessage.textContent = data.session
+                    ? "Compte créé avec succès !"
+                    : "Compte créé ! Consulte ta boîte mail pour confirmer ton adresse.";
+
+                signupForm.reset();
+
+            } catch (error) {
+                console.error("Erreur inscription :", error);
+                authMessage.textContent =
+                    error.message || "Impossible de créer le compte.";
+            } finally {
+                signupButton.disabled = false;
+                signupButton.textContent = "Créer mon compte";
+            }
+        });
+    </script>
+
+</body>
+</html>
