@@ -3,7 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
+  process.env.SUPABASE_ANON_KEY,
+  {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false
+    }
+  }
 );
 
 export default async function handler(req, res) {
@@ -59,12 +65,17 @@ export default async function handler(req, res) {
 
     return res.status(201).json({
       success: true,
-      message: "Compte créé. Vérifiez votre adresse e-mail.",
+      message: data.session
+        ? "Compte créé avec succès."
+        : "Compte créé. Vérifiez votre adresse e-mail.",
       user: {
         id: data.user?.id,
         email: data.user?.email,
         username: cleanUsername
       },
+      access_token: data.session?.access_token || null,
+      refresh_token: data.session?.refresh_token || null,
+      expires_at: data.session?.expires_at || null,
       requiresEmailConfirmation: !data.session
     });
 
@@ -77,3 +88,4 @@ export default async function handler(req, res) {
     });
   }
 }
+
