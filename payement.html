@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abonnement - MangaVerse AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080d1b;
+      color: white;
+      min-height: 100vh;
+      padding: 30px 18px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin: 25px 0 12px;
+      color: #65a5ff;
+    }
+
+    .description {
+      color: #b8c4d9;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .bonus {
+      background: #142d32;
+      border: 1px solid #28c995;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 25px auto;
+      max-width: 650px;
+    }
+
+    .bonus h2 {
+      color: #42e0ad;
+      margin-bottom: 8px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+      margin-top: 35px;
+    }
+
+    .plan {
+      background: #121c31;
+      border: 1px solid #293c5d;
+      border-radius: 18px;
+      padding: 28px 20px;
+    }
+
+    .plan h2 {
+      color: #83b7ff;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .details {
+      color: #bdc8dc;
+      line-height: 1.8;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      border: none;
+      border-radius: 9px;
+      background: linear-gradient(90deg, #287bff, #8156ff);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.88;
+    }
+
+    .notice {
+      color: #aab7cc;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 30px;
+    }
+
+    .status {
+      color: #ffcf70;
+      margin-top: 18px;
+      min-height: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>MangaVerse AI Premium</h1>
+
+    <p class="description">
+      Débloque ton accès à MangaVerse AI en choisissant
+      l'abonnement qui te convient.
+    </p>
+
+    <section class="bonus">
+      <h2>48 heures bonus gratuites</h2>
+      <p>
+        Réservées aux nouveaux utilisateurs après confirmation
+        de leur premier paiement.
+      </p>
+    </section>
+
+    <section class="plans">
+      <article class="plan">
+        <h2>Abonnement hebdomadaire</h2>
+        <div class="price">19,19 €</div>
+        <p class="details">
+          7 jours d'abonnement<br>
+          + 48 heures bonus<br>
+          <strong>9 jours au total</strong>
+        </p>
+        <button onclick="choosePlan('weekly')">
+          Choisir cette offre
+        </button>
+      </article>
+
+      <article class="plan">
+        <h2>Abonnement mensuel</h2>
+        <div class="price">76,76 €</div>
+        <p class="details">
+          1 mois d'abonnement<br>
+          + 48 heures bonus<br>
+          <strong>Durée du mois + 48 heures</strong>
+        </p>
+        <button onclick="choosePlan('monthly')">
+          Choisir cette offre
+        </button>
+      </article>
+    </section>
+
+    <p class="status" id="status"></p>
+
+    <p class="notice">
+      MODE DÉMONSTRATION : aucun paiement réel n'est effectué.
+      L'accès sera débloqué uniquement après confirmation
+      d'un paiement par le serveur.
+    </p>
+  </main>
+
+  <script>
+    function choosePlan(plan) {
+      const status = document.getElementById("status");
+
+      const plans = {
+        weekly: "hebdomadaire à 19,19 €",
+        monthly: "mensuel à 76,76 €"
+      };
+
+      status.textContent =
+        "Offre sélectionnée : " + plans[plan] +
+        ". Le paiement réel n'est pas encore activé.";
+    }
+  </script>
+</body>
+</html>
